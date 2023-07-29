@@ -1,0 +1,12 @@
+README.md
+setup.py
+./csrc/instruction.cpp
+./csrc/interface.cpp
+./csrc/vcu_code.cpp
+test/test.py
+vcu_compiler/__init__.py
+vcu_compiler/interface.py
+vcu_compiler.egg-info/PKG-INFO
+vcu_compiler.egg-info/SOURCES.txt
+vcu_compiler.egg-info/dependency_links.txt
+vcu_compiler.egg-info/top_level.txt

@@ -1,0 +1,252 @@
+Language: Cpp
+# 基于的编码规范, 可选:
+# - LLVM: https://llvm.org/docs/CodingStandards.html
+# - Google: https://google.github.io/styleguide/cppguide.html
+# - Chromium: https://chromium.googlesource.com/chromium/src/+/refs/heads/main/styleguide/styleguide.md
+# - Mozilla: https://firefox-source-docs.mozilla.org/code-quality/coding-style/index.html
+# - WebKit: https://www.webkit.org/coding/coding-style.html
+# - Microsoft: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
+# - GNU: https://www.gnu.org/prep/standards/standards.html
+# - InheritParentConfig: 继承父目录的编码规范, 如果有的话, 不是一个真正的编码规范
+# - None: 不使用, 即自动配置, 也就是本文件中的自定义内容
+# BasedOnStyle:  LLVM
+# The extra indent or outdent of access modifiers
+
+#访问声明符缩进
+AccessModifierOffset: -4
+
+# 开括号后的对齐(包括小括号/大括号/尖括号), 建议使用Align
+# - Align: 对于开括号, 即在换行情况下, 换行的参数跟开括号对齐, 建议使用
+# - DontAlign: 不对于开括号, 即换行时使用配置的空格数
+# - AlwaysBreak: 永远换行, 即第一个参数都不允许粘连括号, 会强制换行, 换行后使用配置空格数对齐
+# - BlockIndent: 同AlwaysBreak, 多了一个操作: 如果参数不固定在同一行, 闭括号将在下一行
+AlignAfterOpenBracket: Align
+
+# - 结构休数组统一初始化对齐, 建议不配置, 没过多必要, 详见clang-format doc
+# - None: 不做处理, 即保留开发者的代码
+# - Left: 左对齐
+# - Right: 右对齐
+
+# - 结构休数组统一初始化对齐, 建议不配置, 没过多必要, 详见clang-format doc
+# - None: 不做处理, 即保留开发者的代码
+# - Left: 左对齐
+# - Right: 右对齐
+AlignArrayOfStructures: None
+
+# 连续赋值语句的对齐，即多个赋值语句连续出现时的对齐策略配置, 包含多个子配置项
+# None - Consecutive - AcrossEmptyLines - AcrossComments - AcrossEmptyLinesAndComments
+AlignConsecutiveAssignments: Consecutive
+
+# 是否对齐连续声明, 同AlignConsecutiveDeclarations
+# None - Consecutive - AcrossEmptyLines - AcrossComments - AcrossEmptyLinesAndComments
+AlignConsecutiveDeclarations: Consecutive
+
+# None - Consecutive - AcrossEmptyLines - AcrossComments - AcrossEmptyLinesAndComments
+AlignConsecutiveMacros: Consecutive
+
+# 同AlignConsecutiveAssignments, 表示连续位定义语句出现时, 是否需要对齐:符号, 位变量定义用得少, 可以不开启
+# None - Consecutive - AcrossEmptyLines - AcrossComments - AcrossEmptyLinesAndComments
+AlignConsecutiveBitFields: Consecutive
+
+# 续行符(\\)对齐:
+# - DontAlign: 不做操作
+# - Left: 尽可能向左对齐, 即最长一行代码为准
+# - Right: 跟开发都写的最远的\\对齐(即不会自动缩减你的空格), 建议使用这个
+AlignEscapedNewlines: Right
+
+# 在二元/一元表达式中的操作数对齐, 可选值:
+# - DontAlign: 不做对齐, 在操作数换行后, 将使用ContinuationIndentWidth来对齐
+# - Align: 即换行时, 操作数(or 操作符加操作数)跟上一行的第一个操作数左对齐, 具体操作符要不要换行, 由BreakBeforeBinaryOperators配置决定
+AlignOperands: true
+
+# 在一行中注释
+AlignTrailingComments: true
+
+# If the function declaration doesn’t fit on a line, allow putting all parameters of a function declaration onto the next line
+AllowAllParametersOfDeclarationOnNextLine: true
+
+# If a function call or braced initializer list doesn’t fit on a line, allow putting all arguments onto the next line
+AllowAllArgumentsOnNextLine: true
+ 
+# Dependent on the value, while (true) { continue; } can be put on a single line.
+# Never merge blocks into a single line.
+# Empty only merge empty blocks.
+# Always merge short blocks into a single line.
+AllowShortBlocksOnASingleLine: Empty
+
+# If true, short case labels will be contracted to a single line.
+AllowShortCaseLabelsOnASingleLine: false
+
+# Dependent on the value, int f() { return 0; } can be put on a single line.
+AllowShortFunctionsOnASingleLine: Empty
+
+# Allow short enums on a single line.
+AllowShortEnumsOnASingleLine: false
+
+# Dependent on the value, if (a) return; can be put on a single line.
+AllowShortIfStatementsOnASingleLine: Never
+
+# Dependent on the value, auto lambda []() { return 0; } can be put on a single line.
+# None: Never merge lambdas into a single line.
+# Inline: Merge lambda into a single line if the lambda is argument of a function.
+# Empty: Only merge empty lambdas.
+AllowShortLambdasOnASingleLine: None
+
+# If true, while (true) continue; can be put on a single line.
+AllowShortLoopsOnASingleLine: false
+
+# The function definition return type breaking style to use. This option is deprecated and is retained for backwards compatibility.
+AlwaysBreakAfterReturnType: None
+
+# The function declaration return type breaking style to use.
+AlwaysBreakBeforeMultilineStrings: false
+
+# The template declaration breaking style to use.
+# No: Do not force break before declaration. PenaltyBreakTemplateDeclaration is taken into account.
+# MultiLine: Force break after template declaration only when the following declaration spans multiple lines.
+# Yes: Always break after template declaration.
+AlwaysBreakTemplateDeclarations: MultiLine
+
+# If false, a function call’s arguments will either be all on the same line or will have one line each.
+BinPackArguments: false
+
+# If false, a function declaration’s or function definition’s parameters will either all be on the same line or will have one line each.
+BinPackParameters: false
+
+# The way to wrap binary operators.
+# None: Break after operators.
+# NonAssignment: Break before operators that aren’t assignments.
+# All: Break before operators.
+BreakBeforeBinaryOperators: NonAssignment
+
+# The brace breaking style to use.
+# Attach) Always attach braces to surrounding context.
+# Linux) Like Attach, but break before braces on function, namespace and class definitions.
+# Mozilla) Like Attach, but break before braces on enum, function, and record definitions.
+# Stroustrup) Like Attach, but break before function definitions, catch, and else.
+# Allman) Always break before braces.
+# Whitesmiths) Like Allman but always indent braces and line up code with braces.
+# GNU) Always break before braces and add an extra level of indentation to braces of control statements, not to those of class, function or other definitions.
+# WebKit) Like Attach, but break before functions.
+BreakBeforeBraces: Stroustrup
+
+# If true, ternary operators will be placed after line breaks.
+BreakBeforeTernaryOperators: false
+
+# The break constructor initializers style to use.
+# BeforeColon) Break constructor initializers before the colon and after the commas.
+# BeforeComma) Break constructor initializers before the colon and commas, and align the commas with the colon.
+# AfterColon) Break constructor initializers after the colon and commas.
+BreakConstructorInitializers: AfterColon
+
+# The inheritance list style to use.
+# BeforeColon) Break inheritance list before the colon and after the commas.
+# BeforeComma) Break inheritance list before the colon and commas, and align the commas with the colon.
+# AfterColon) Break inheritance list after the colon and commas.
+# AfterComma) Break inheritance list only after the commas.
+BreakInheritanceList: AfterColon
+
+# Allow breaking string literals when formatting.
+BreakStringLiterals: false
+
+# The column limit.
+ColumnLimit: 120
+
+# If true, consecutive namespace declarations will be on the same line. If false, each namespace is declared on a new line.
+CompactNamespaces: false
+
+# This option is deprecated. See CurrentLine of PackConstructorInitializers.
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# The number of characters to use for indentation of constructor initializer lists as well as inheritance lists.
+ConstructorInitializerIndentWidth: 2
+
+# Indent width for line continuations.
+ContinuationIndentWidth: 2
+
+# If true, format braced lists as best suited for C++11 braced lists.
+Cpp11BracedListStyle: true
+
+# 是否开启文件分析, 根据文件中的*/&使用情况更新clang-format设定, 在无法决定时, 使用PointerAlignment代替, 不建议开启
+DerivePointerAlignment: false
+
+# If true, clang-format adds missing namespace end comments for namespaces and fixes invalid existing ones. This doesn’t affect short namespaces, which are controlled by ShortNamespaceLines.
+FixNamespaceComments: true
+
+# Indent case labels one level from the switch statement.
+IndentCaseLabels: true
+
+# The preprocessor directive indenting style to use.
+IndentPPDirectives: None
+
+# The preprocessor directive indenting style to use.
+IndentWidth: 2
+
+# Indent if a function definition or declaration is wrapped after the type.
+IndentWrappedFunctionNames: false
+
+# If true, the empty line at the start of blocks is kept.
+KeepEmptyLinesAtTheStartOfBlocks: true
+
+# The maximum number of consecutive empty lines to keep.
+MaxEmptyLinesToKeep: 1
+
+# The indentation used for namespaces.
+NamespaceIndentation: None
+
+# Pointer and reference alignment style.
+PointerAlignment: Left
+
+# If true, clang-format will attempt to re-flow comments. That is it will touch a comment and reflow long comments into new lines, trying to obey the ColumnLimit.
+ReflowComments: true
+
+# Controls if and how clang-format will sort #includes.
+SortIncludes: true
+
+# Controls if and how clang-format will sort using declarations.
+SortUsingDeclarations: false
+
+# If true, a space is inserted after C style casts.
+SpaceAfterCStyleCast: true
+
+# If true, a space will be inserted after the ‘template’ keyword.
+SpaceAfterTemplateKeyword: false
+
+# If false, spaces will be removed before assignment operators.
+SpaceBeforeAssignmentOperators: true
+
+# If true, a space will be inserted before a C++11 braced list used to initialize an object (after the preceding identifier or type).
+SpaceBeforeCpp11BracedList: true
+
+# If false, spaces will be removed before constructor initializer colon.
+SpaceBeforeCtorInitializerColon: true
+
+# If false, spaces will be removed before inheritance colon.
+SpaceBeforeInheritanceColon: true
+
+# Defines in which cases to put a space before opening parentheses.
+SpaceBeforeParens: ControlStatements
+
+# Control of individual space before parentheses.
+SpaceInEmptyParentheses: false
+
+# The number of spaces before trailing line comments (// - comments).
+SpacesBeforeTrailingComments: 2
+
+# The SpacesInAnglesStyle to use for template argument lists.
+SpacesInAngles: false
+
+# If true, spaces may be inserted into C style casts.
+SpacesInCStyleCastParentheses: false
+
+# If true, spaces will be inserted around if/for/switch/while conditions.
+SpacesInContainerLiterals: false
+
+# If true, spaces will be inserted after ( and before ).
+SpacesInParentheses: false
+
+# If true, spaces will be inserted after [ and before ]. Lambdas without arguments or unspecified size array declarations will not be affected.
+SpacesInSquareBrackets: false
+Standard: Cpp11
+TabWidth: 2
+UseTab: Never

@@ -1,0 +1,6 @@
+{
+  "cmake.sourceDirectory": "/home/weizema/work/vcu_verify/vcu_compiler",
+  "files.associations": {
+    "cstdint": "cpp"
+  }
+}

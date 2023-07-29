@@ -1,0 +1,155 @@
+/*
+ * @Author: weizema weizema@smail.nju.edu.cn
+ * @Date: 2023-07-28 09:54:18
+ * @LastEditors: weizema weizema@smail.nju.edu.cn
+ * @LastEditTime: 2023-07-28 16:36:53
+ * @FilePath: /vcu_compiler/csrc/instruction.h
+ * @Description:
+ */
+#pragma once
+
+#include <cstdint>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <string>
+#include <vector>
+
+namespace VCU_INSN {
+enum COMMON {
+  OPCODE_BITS          = 3,
+  LOAD_INSNKIND_BITS   = 2,
+  LOAD_INSNNUM_BITS    = 8,
+  STORE_INSNKIND_BITS  = 2,
+  STORE_INSNNUM_BITS   = 8,
+  PEA_INSNKIND_BITS    = 2,
+  PEA_INSNNUM_BITS     = 8,
+  SAMPLE_INSNKIND_BITS = 2,
+  SAMPLE_INSNNUM_BITS  = 8,
+  VCU_INSNTYPE_BITS    = 1
+};
+
+enum VCU_EXECUTE {
+  VCU_INSN_DATA_RAM_IN_ADDRESS_BITS   = 12,
+  VCU_INSN_DATA_RAM_OUT_ADDRESS_BITS  = 12,
+  VCU_INSN_PARA_RAM_IN_ADDRESS_BITS   = 5,
+  VCU_INSN_RESADD_RAM_IN_ADDRESS_BITS = 10,
+  VCU_INSN_FPU_BITS                   = 20,
+  VCU_INSN_COMPUTE_LENGTH_BITS        = 12,
+  VCU_INSN_RAM_OUT_MODE_BITS          = 2,
+  VCU_INSN_RAM_DATA_IN_TYPE_BITS      = 1,
+  VCU_INSN_RAM_DATA_OUT_TYPE_BITS     = 1,
+  VCU_INSN_PARA_RAM_VALID_BITS        = 2,
+  VCU_INSN_MULT_PARA_BITS             = 1,
+  VCU_INSN_RESADD_RAM_VALID_BITS      = 1,
+  VCU_INSN_RESADD_PARA_TYPE_BITS      = 2,
+  VCU_INSN_FPU_WORK_BITS              = 1,
+  VCU_INSN_PARA_STRIDE_BITS           = 6,
+  VCU_INSN_FREE_BITS                  = (128 - OPCODE_BITS - VCU_INSNTYPE_BITS - VCU_INSN_DATA_RAM_IN_ADDRESS_BITS
+                        - VCU_INSN_DATA_RAM_OUT_ADDRESS_BITS - VCU_INSN_PARA_RAM_IN_ADDRESS_BITS
+                        - VCU_INSN_RESADD_RAM_IN_ADDRESS_BITS - VCU_INSN_FPU_BITS - VCU_INSN_COMPUTE_LENGTH_BITS
+                        - VCU_INSN_RAM_OUT_MODE_BITS - VCU_INSN_RAM_DATA_IN_TYPE_BITS - VCU_INSN_RAM_DATA_OUT_TYPE_BITS
+                        - VCU_INSN_PARA_RAM_VALID_BITS - VCU_INSN_MULT_PARA_BITS - VCU_INSN_RESADD_RAM_VALID_BITS
+                        - VCU_INSN_RESADD_PARA_TYPE_BITS - VCU_INSN_FPU_WORK_BITS - VCU_INSN_PARA_STRIDE_BITS)
+};
+
+enum VCU_CONFIG {
+  VCU_CONFIG_ADDER_CONSTANT_0_BITS          = 16,
+  VCU_CONFIG_ADDER_CONSTANT_1_BITS          = 16,
+  VCU_CONFIG_ADDER_CONSTANT_2_BITS          = 16,
+  VCU_CONFIG_MULTIPLICATION_CONSTANT_0_BITS = 16,
+  VCU_CONFIG_MULTIPLICATION_CONSTANT_1_BITS = 16,
+  VCU_CONFIG_MULTIPLICATION_CONSTANT_2_BITS = 16,
+  VCU_CONFIG_COMPARE_CONSTANT_BITS          = 16,
+  VCU_CONFIG_FREE_BITS                      = (128 - OPCODE_BITS - VCU_INSNTYPE_BITS - VCU_CONFIG_ADDER_CONSTANT_0_BITS
+                          - VCU_CONFIG_ADDER_CONSTANT_1_BITS - VCU_CONFIG_ADDER_CONSTANT_2_BITS
+                          - VCU_CONFIG_MULTIPLICATION_CONSTANT_0_BITS - VCU_CONFIG_MULTIPLICATION_CONSTANT_1_BITS
+                          - VCU_CONFIG_MULTIPLICATION_CONSTANT_2_BITS - VCU_CONFIG_COMPARE_CONSTANT_BITS)
+};
+
+typedef struct {
+  uint64_t low64  : 64;
+  uint64_t high64 : 64;
+} NpuInsn;
+
+typedef struct {
+  uint64_t opcode : OPCODE_BITS;
+  uint64_t VCU_INSNTYPE : VCU_INSNTYPE_BITS;
+  uint64_t VCU_FREE_BITS : VCU_INSN_FREE_BITS;
+  uint64_t VCU_INSN_PARA_STRIDE : VCU_INSN_PARA_STRIDE_BITS;
+  uint64_t VCU_INSN_FPU_WORK : VCU_INSN_FPU_WORK_BITS;
+  uint64_t VCU_INSN_RESADD_PARA_TYPE : VCU_INSN_RESADD_PARA_TYPE_BITS;
+  uint64_t VCU_INSN_RESADD_RAM_VALID : VCU_INSN_RESADD_RAM_VALID_BITS;
+  uint64_t VCU_INSN_MULT_PARA : VCU_INSN_MULT_PARA_BITS;
+  uint64_t VCU_INSN_PARA_RAM_VALID : VCU_INSN_PARA_RAM_VALID_BITS;
+  uint64_t VCU_INSN_RAM_DATA_OUT_TYPE : VCU_INSN_RAM_DATA_OUT_TYPE_BITS;
+  uint64_t VCU_INSN_RAM_DATA_IN_TYPE : VCU_INSN_RAM_DATA_IN_TYPE_BITS;
+  uint64_t VCU_INSN_RAM_OUT_MODE : VCU_INSN_RAM_OUT_MODE_BITS;
+  uint64_t VCU_INSN_COMPUTE_LENGTH : VCU_INSN_COMPUTE_LENGTH_BITS;
+  uint64_t VCU_INSN_FPU : VCU_INSN_FPU_BITS;
+  uint64_t VCU_INSN_RESADD_RAM_IN_ADDRESS : VCU_INSN_RESADD_RAM_IN_ADDRESS_BITS;
+  uint64_t VCU_INSN_PARA_RAM_IN_ADDRESS : VCU_INSN_PARA_RAM_IN_ADDRESS_BITS;
+  uint64_t VCU_INSN_DATA_RAM_OUT_ADDRESS : VCU_INSN_DATA_RAM_OUT_ADDRESS_BITS;
+  uint64_t VCU_INSN_DATA_RAM_IN_ADDRESS : VCU_INSN_DATA_RAM_IN_ADDRESS_BITS;
+} VCUExecuteINSN;
+
+typedef struct {
+  uint64_t opcode : OPCODE_BITS;
+  uint64_t VCU_INSNTYPE : VCU_INSNTYPE_BITS;
+  uint64_t VCU_CONFIG_ADDER_CONSTANT_0 : VCU_CONFIG_ADDER_CONSTANT_0_BITS;
+  uint64_t VCU_CONFIG_ADDER_CONSTANT_1 : VCU_CONFIG_ADDER_CONSTANT_1_BITS;
+  uint64_t VCU_CONFIG_ADDER_CONSTANT_2 : VCU_CONFIG_ADDER_CONSTANT_2_BITS;
+  uint64_t VCU_CONFIG_MULTIPLICATION_CONSTANT_0 : VCU_CONFIG_MULTIPLICATION_CONSTANT_0_BITS;
+  uint64_t VCU_CONFIG_MULTIPLICATION_CONSTANT_1 : VCU_CONFIG_MULTIPLICATION_CONSTANT_1_BITS;
+  uint64_t VCU_CONFIG_MULTIPLICATION_CONSTANT_2 : VCU_CONFIG_MULTIPLICATION_CONSTANT_2_BITS;
+  uint64_t VCU_CONFIG_COMPARE_CONSTANT : VCU_CONFIG_COMPARE_CONSTANT_BITS;
+  uint64_t VCU_CONFIG_FREE : VCU_CONFIG_FREE_BITS;
+} VCUConfigINSN;
+
+enum OPCODE {
+  SYNCHRONZIE_INSN_OPCODE = 0,
+  LOAD_INSN_OPCODE        = 1,
+  STORE_INSN_OPCODE       = 2,
+  PEA_INSN_OPCODE         = 3,
+  VCU_INSN_OPCODE         = 4,
+  SAMPLE_INSN_OPCODE      = 5,
+  EMPTY_INSN_OPCODE       = 6
+};
+
+enum VCU_INSN_TYPE {
+  CONFIG_INSN  = 1,
+  EXECUTE_INSN = 0
+};
+
+union INSN {
+  NpuInsn        npuinsn;
+  VCUExecuteINSN vcu_execute;
+  VCUConfigINSN  vcu_config;
+};
+
+NpuInsn get_VCUExecuteINSN(uint64_t       VCU_INSN_PARA_STRIDE,
+                           uint64_t       VCU_INSN_FPU_WORK,
+                           uint64_t       VCU_INSN_RESADD_PARA_TYPE,
+                           uint64_t       VCU_INSN_RESADD_RAM_VALID,
+                           uint64_t       VCU_INSN_MULT_PARA,
+                           uint64_t       VCU_INSN_PARA_RAM_VALID,
+                           uint64_t       VCU_INSN_RAM_DATA_OUT_TYPE,
+                           uint64_t       VCU_INSN_RAM_DATA_IN_TYPE,
+                           uint64_t       VCU_INSN_RAM_OUT_MODE,
+                           uint64_t       VCU_INSN_COMPUTE_LENGTH,
+                           uint64_t       VCU_INSN_FPU,
+                           uint64_t       VCU_INSN_RESADD_RAM_IN_ADDRESS,
+                           uint64_t       VCU_INSN_PARA_RAM_IN_ADDRESS,
+                           uint64_t       VCU_INSN_DATA_RAM_OUT_ADDRESS,
+                           uint64_t       VCU_INSN_DATA_RAM_IN_ADDRESS,
+                           std::ofstream& buf);
+
+NpuInsn get_VCUConfigINSN(uint64_t       VCU_CONFIG_ADDER_CONSTANT_0,
+                          uint64_t       VCU_CONFIG_ADDER_CONSTANT_1,
+                          uint64_t       VCU_CONFIG_ADDER_CONSTANT_2,
+                          uint64_t       VCU_CONFIG_MULTIPLICATION_CONSTANT_0,
+                          uint64_t       VCU_CONFIG_MULTIPLICATION_CONSTANT_1,
+                          uint64_t       VCU_CONFIG_MULTIPLICATION_CONSTANT_2,
+                          uint64_t       VCU_CONFIG_COMPARE_CONSTANT,
+                          std::ofstream& buf);
+}  // namespace VCU_INSN

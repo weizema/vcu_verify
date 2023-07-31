@@ -1,0 +1,9 @@
+Command Line: /home/weizema/tools/synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -f filelist.f -top vcu_tb -nologo -ssf vcu.fsdb -sswr ./signal.rc
+uname(Linux DESKTOP-LLNQVAE 5.15.90.1-microsoft-standard-WSL2 #1 SMP Fri Jan 27 02:56:13 UTC 2023 x86_64)
+type= DS_SCOPE element= 1 field= 1
+VERILOG vcu_tb
+VERILOG vcu
+-----
+second field= DebussyLib
+third field= vcu
+au time 2461.922016 29.181090 24.667057 delta 911962112 911962112 total 1344327680 1344327680

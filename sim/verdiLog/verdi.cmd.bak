@@ -1,0 +1,9 @@
+sidCmdLineBehaviorAnalysisOpt -incr -clockSkew 0 -loopUnroll 0 -bboxEmptyModule 0  -cellModel 0 -bboxIgnoreProtected 0 
+debImport "-f" "filelist.f" "-top" "vcu_tb"
+nsMsgSwitchTab -tab general
+debLoadSimResult /home/weizema/work/vcu_verify/sim/vcu.fsdb
+wvCreateWindow
+nsMsgSwitchTab -tab cmpl
+wvRestoreSignal -win $_nWave2 "./signal.rc" -overWriteAutoAlias on -appendSignals \
+           on
+debExit

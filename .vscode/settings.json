@@ -2,5 +2,9 @@
   "cmake.sourceDirectory": "/home/weizema/work/vcu_verify/vcu_compiler",
   "files.associations": {
     "cstdint": "cpp"
-  }
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none"
 }

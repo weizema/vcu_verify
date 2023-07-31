@@ -1,5 +1,7 @@
 0 
-43
+45
++define+DATA_NUM=800
++define+NUM_INSN=1
 +error+999
 +itf+/home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
 +memcbk
@@ -43,21 +45,21 @@
 /home/weizema/tools/synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
 sim.log
 vcu_tb
-57
+53
 sysc_uni_pwd=/home/weizema/work/vcu_verify/sim
 _CE_M=
 _CE_CONDA=
 XDG_RUNTIME_DIR=/run/user/1000/
 XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
-WSL_INTEROP=/run/WSL/8505_interop
+WSL_INTEROP=/run/WSL/1471_interop
 WSL_DISTRO_NAME=Ubuntu-18.04
 WSLENV=VSCODE_WSL_EXT_LOCATION/up
 WSL2_GUI_APPS_ENABLED=1
 WAYLAND_DISPLAY=wayland-0
-VSCODE_IPC_HOOK_CLI=/run/user/1000/vscode-ipc-40880de5-5a01-4465-b9ac-c107771908a1.sock
+VSCODE_IPC_HOOK_CLI=/run/user/1000/vscode-ipc-80e628eb-23d2-4b38-8603-6608f134d04b.sock
 VSCODE_GIT_IPC_HANDLE=/run/user/1000/vscode-git-6d6fe83b57.sock
-VSCODE_GIT_ASKPASS_NODE=/home/weizema/.vscode-server/bin/74f6148eb9ea00507ec113ec51c489d6ffb4b771/node
-VSCODE_GIT_ASKPASS_MAIN=/home/weizema/.vscode-server/bin/74f6148eb9ea00507ec113ec51c489d6ffb4b771/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_NODE=/home/weizema/.vscode-server/bin/2ccd690cbff1569e4a83d7c43d45101f817401dc/node
+VSCODE_GIT_ASKPASS_MAIN=/home/weizema/.vscode-server/bin/2ccd690cbff1569e4a83d7c43d45101f817401dc/extensions/git/dist/askpass-main.js
 VSCODE_GIT_ASKPASS_EXTRA_ARGS=
 VMR_MODE_FLAG=64
 VERDI_HOME=/home/weizema/tools/synopsys/verdi/Verdi_O-2018.09-SP2
@@ -72,7 +74,7 @@ VCS_ARCH_OVERRIDE=linux
 VCS_ARCH=linux64
 UNAME=/bin/uname
 TOOL_HOME=/home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64
-TERM_PROGRAM_VERSION=1.80.1
+TERM_PROGRAM_VERSION=1.80.2
 TERM_PROGRAM=vscode
 SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
 SNPS_VCS_INTERNAL_UBUNTU_PRE_LDFLAGS= -no-pie 
@@ -82,28 +84,24 @@ SCL_HOME=/home/weizema/tools/synopsys/scl/2018.06
 PULSE_SERVER=unix:/mnt/wslg/PulseServer
 OVA_UUM=0
 NAME=DESKTOP-LLNQVAE
-MFLAGS=
-MAKE_TERMOUT=/dev/pts/9
-MAKE_TERMERR=/dev/pts/9
-MAKELEVEL=1
-MAKEFLAGS=
 LESSOPEN=| /usr/bin/lesspipe %s
 LESSCLOSE=/usr/bin/lesspipe %s %s
 LC_ALL=C
 HOSTTYPE=x86_64
-GIT_ASKPASS=/home/weizema/.vscode-server/bin/74f6148eb9ea00507ec113ec51c489d6ffb4b771/extensions/git/dist/askpass.sh
+GIT_ASKPASS=/home/weizema/.vscode-server/bin/2ccd690cbff1569e4a83d7c43d45101f817401dc/extensions/git/dist/askpass.sh
 DVE_HOME=/home/weizema/tools/synopsys/vcs/O-2018.09-SP2
 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
-CONDA_SHLVL=1
+CONDA_SHLVL=2
 CONDA_PYTHON_EXE=/home/weizema/tools/miniconda3/bin/python
-CONDA_PROMPT_MODIFIER=(base) 
-CONDA_PREFIX=/home/weizema/tools/miniconda3
+CONDA_PROMPT_MODIFIER=(torch) 
+CONDA_PREFIX_1=/home/weizema/tools/miniconda3
+CONDA_PREFIX=/home/weizema/tools/miniconda3/envs/torch
 CONDA_EXE=/home/weizema/tools/miniconda3/bin/conda
-CONDA_DEFAULT_ENV=base
+CONDA_DEFAULT_ENV=torch
 COLORTERM=truecolor
 0
 26
-1690251167 ../rtl/vcu.v
+1690772794 ../rtl/vcu.v
 1690251167 ../rtl/reciprocal.v
 1690251167 ../rtl/ram/two_port_ram_512x4096.v
 1690251167 ../rtl/ram/two_port_ram_512x1024.v
@@ -125,7 +123,7 @@ COLORTERM=truecolor
 1690251167 ../rtl/addition_fp16.v
 1690251167 ../rtl/add_float16_simple.v
 1690251167 ../rtl/QDS.v
-1690251857 ./vcu_tb.v
+1690789107 ./vcu_tb.v
 1690251618 filelist.f
 1550753332 /home/weizema/tools/synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
 1551421246 /home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
@@ -134,5 +132,5 @@ COLORTERM=truecolor
 1551421792 /home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib/liberrorinf.so
 1551421768 /home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so
 1551421789 /home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib/libvfs.so
-1690251861 simv.daidir
+1690789112 simv.daidir
 -1 partitionlib

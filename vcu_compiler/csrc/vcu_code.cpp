@@ -1,10 +1,9 @@
 /*
- * @Author: weizema weizema@smail.nju.edu.cn
+ * @Author: weizema
  * @Date: 2023-07-28 09:54:35
- * @LastEditors: weizema weizema@smail.nju.edu.cn
- * @LastEditTime: 2023-07-28 18:49:34
- * @FilePath: /vcu_compiler/csrc/vcu_code.cpp
- * @Description:
+ * @LastEditors: weizema
+ * @LastEditTime: 2023-07-30 20:08:21
+ * @Description: 
  */
 #include "vcu_code.h"
 #include <iomanip>

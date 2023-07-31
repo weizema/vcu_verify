@@ -1102,7 +1102,7 @@ generate
     operator operator(
     .clk(clk),
     .rst(rst),
-    .state(state),
+    .state(state[1:0]),
     .constant_code(constant_code),
     .operation_code(operation_code),
     .configuration_code(configuration_code),

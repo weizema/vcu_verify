@@ -1,10 +1,9 @@
 /*
- * @Author: weizema weizema@smail.nju.edu.cn
+ * @Author: weizema
  * @Date: 2023-07-28 09:54:25
- * @LastEditors: weizema weizema@smail.nju.edu.cn
- * @LastEditTime: 2023-07-29 21:36:22
- * @FilePath: /vcu_compiler/csrc/instruction.cpp
- * @Description:
+ * @LastEditors: weizema
+ * @LastEditTime: 2023-07-31 12:36:58
+ * @Description: 
  */
 #include "instruction.h"
 
@@ -40,13 +39,15 @@ NpuInsn get_VCUExecuteINSN(uint64_t       VCU_INSN_PARA_STRIDE,
   vcu_execute.VCU_INSN_RAM_DATA_OUT_TYPE     = VCU_INSN_RAM_DATA_OUT_TYPE;
   vcu_execute.VCU_INSN_RAM_DATA_IN_TYPE      = VCU_INSN_RAM_DATA_IN_TYPE;
   vcu_execute.VCU_INSN_RAM_OUT_MODE          = VCU_INSN_RAM_OUT_MODE;
-  vcu_execute.VCU_INSN_COMPUTE_LENGTH        = VCU_INSN_COMPUTE_LENGTH;
+  vcu_execute.VCU_INSN_COMPUTE_LENGTH_0      = VCU_INSN_COMPUTE_LENGTH & 0b1111111;
+  vcu_execute.VCU_INSN_COMPUTE_LENGTH_1      = ((VCU_INSN_COMPUTE_LENGTH >> 7) & 0b11111);
   vcu_execute.VCU_INSN_FPU                   = VCU_INSN_FPU;
   vcu_execute.VCU_INSN_RESADD_RAM_IN_ADDRESS = VCU_INSN_RESADD_RAM_IN_ADDRESS;
   vcu_execute.VCU_INSN_PARA_RAM_IN_ADDRESS   = VCU_INSN_PARA_RAM_IN_ADDRESS;
   vcu_execute.VCU_INSN_DATA_RAM_OUT_ADDRESS  = VCU_INSN_DATA_RAM_OUT_ADDRESS;
   vcu_execute.VCU_INSN_DATA_RAM_IN_ADDRESS   = VCU_INSN_DATA_RAM_IN_ADDRESS;
   converter.vcu_execute                      = vcu_execute;
+  
   buf << std::hex << std::setw(16) << std::setfill('0') << converter.npuinsn.high64 << std::hex << std::setw(16)
       << std::setfill('0') << converter.npuinsn.low64 << std::endl;
 

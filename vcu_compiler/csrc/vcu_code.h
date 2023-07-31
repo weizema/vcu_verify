@@ -1,9 +1,8 @@
 /*
- * @Author: weizema weizema@smail.nju.edu.cn
+ * @Author: weizema
  * @Date: 2023-07-28 09:54:31
- * @LastEditors: weizema weizema@smail.nju.edu.cn
- * @LastEditTime: 2023-07-28 18:50:01
- * @FilePath: /vcu_compiler/csrc/vcu_code.h
+ * @LastEditors: weizema
+ * @LastEditTime: 2023-07-30 20:10:52
  * @Description:
  */
 #pragma once
@@ -13,19 +12,6 @@
 #include <vector>
 
 namespace VCU_CODE {
-
-enum ACTIVATION_TYPE {
-  NONE       = 0,
-  RELU       = 1,
-  LEAKY_RELU = 2,
-  SIGMOID    = 3,
-  TANH       = 4,
-  SELU       = 5,
-  MISH       = 6,
-  SOFTPLUS   = 7,
-  SWISH      = 8,
-  GELU       = 9
-};
 
 enum VCUCODE_BITS {
   OPCODE_BITS   = 4,

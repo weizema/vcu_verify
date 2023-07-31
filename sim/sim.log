@@ -1,8 +1,9 @@
 Command: vcs -full64 -f filelist.f -top vcu_tb -R -v2005 -timescale=1ns/1ns -debug_acc+dmptf \
 -debug_region+cell+encrypt+lib -debug_access+all +vcd+vcdpluson +memcbk +error+999 \
--LDFLAGS -Wl,--no-as-needed -kdb -lca -l sim.log
+-LDFLAGS -Wl,--no-as-needed -kdb -lca -l sim.log +define+DATA_NUM=800 +define+NUM_INSN=1 \
+
                          Chronologic VCS (TM)
-       Version O-2018.09-SP2_Full64 -- Tue Jul 25 10:24:19 2023
+       Version O-2018.09-SP2_Full64 -- Mon Jul 31 15:38:28 2023
                Copyright (c) 1991-2018 by Synopsys Inc.
                          ALL RIGHTS RESERVED
 
@@ -44,601 +45,24 @@ Top Level Modules:
 TimeScale is 1 ps / 1 ps
 
 Warning-[TFIPC] Too few instance port connections
-./vcu_tb.v, 158
+./vcu_tb.v, 130
 vcu_tb, "vcu vcu( .insn (insn),  .work_en (work_en),  .vcu_done (vcu_done),  .clk (clk),  .rst (rst),  .r_data_acc (r_data_acc),  .r_addr_acc (r_addr_acc),  .r_en_acc (r_en_acc),  .w_data_acc (w_data_acc),  .w_addr_acc (w_addr_acc),  .w_en_acc (w_en_acc),  .r_data_para (r_data_para),  .r_addr_para (r_addr_para),  .r_en_para (r_en_para),  .w_data_ofmap (w_data_ofmap),  .w_addr_ofmap (w_addr_ofmap),  .w_en_ofmap (w_en_ofmap),  .w_data_inp (w_data_inp),  .w_addr_inp (w_addr_inp),  .w_en_inp (w_en_inp),  .w_data_opcode (w_data_opcode),  .w_addr_opcode (w_addr_opcode),  .w_en_opcode (w_en_opcode),  .r_data_resadd (r_data_resadd),  .r_addr_resadd (r_addr_resadd),  .r_en_resadd (r_en_resadd),  .acc_data_in_type (acc_data_in_type),  .acc_data_out_type (acc_data_out_type ... "
   The above instance has fewer port connections than the module definition.
   Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
   ports.
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[0].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (0 + 1)) - 1):(16 * 0)]),  .iteration_data (iteration_data[((16 * (0 + 1)) - 1):(16 * 0)]),  .constant_data (constant_data[((16 * (0 + 1)) - 1):(16 * 0)]),  .constant_para (constant_para[((16 * (0 + 1)) - 1):(16 * 0)]),  .constant_resadd (constant_resadd[((16 * (0 + 1)) - 1):(16 * 0)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[0].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[1].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (1 + 1)) - 1):(16 * 1)]),  .iteration_data (iteration_data[((16 * (1 + 1)) - 1):(16 * 1)]),  .constant_data (constant_data[((16 * (1 + 1)) - 1):(16 * 1)]),  .constant_para (constant_para[((16 * (1 + 1)) - 1):(16 * 1)]),  .constant_resadd (constant_resadd[((16 * (1 + 1)) - 1):(16 * 1)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[1].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[2].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (2 + 1)) - 1):(16 * 2)]),  .iteration_data (iteration_data[((16 * (2 + 1)) - 1):(16 * 2)]),  .constant_data (constant_data[((16 * (2 + 1)) - 1):(16 * 2)]),  .constant_para (constant_para[((16 * (2 + 1)) - 1):(16 * 2)]),  .constant_resadd (constant_resadd[((16 * (2 + 1)) - 1):(16 * 2)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[2].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[3].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (3 + 1)) - 1):(16 * 3)]),  .iteration_data (iteration_data[((16 * (3 + 1)) - 1):(16 * 3)]),  .constant_data (constant_data[((16 * (3 + 1)) - 1):(16 * 3)]),  .constant_para (constant_para[((16 * (3 + 1)) - 1):(16 * 3)]),  .constant_resadd (constant_resadd[((16 * (3 + 1)) - 1):(16 * 3)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[3].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[4].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (4 + 1)) - 1):(16 * 4)]),  .iteration_data (iteration_data[((16 * (4 + 1)) - 1):(16 * 4)]),  .constant_data (constant_data[((16 * (4 + 1)) - 1):(16 * 4)]),  .constant_para (constant_para[((16 * (4 + 1)) - 1):(16 * 4)]),  .constant_resadd (constant_resadd[((16 * (4 + 1)) - 1):(16 * 4)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[4].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[5].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (5 + 1)) - 1):(16 * 5)]),  .iteration_data (iteration_data[((16 * (5 + 1)) - 1):(16 * 5)]),  .constant_data (constant_data[((16 * (5 + 1)) - 1):(16 * 5)]),  .constant_para (constant_para[((16 * (5 + 1)) - 1):(16 * 5)]),  .constant_resadd (constant_resadd[((16 * (5 + 1)) - 1):(16 * 5)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[5].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[6].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (6 + 1)) - 1):(16 * 6)]),  .iteration_data (iteration_data[((16 * (6 + 1)) - 1):(16 * 6)]),  .constant_data (constant_data[((16 * (6 + 1)) - 1):(16 * 6)]),  .constant_para (constant_para[((16 * (6 + 1)) - 1):(16 * 6)]),  .constant_resadd (constant_resadd[((16 * (6 + 1)) - 1):(16 * 6)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[6].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[7].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (7 + 1)) - 1):(16 * 7)]),  .iteration_data (iteration_data[((16 * (7 + 1)) - 1):(16 * 7)]),  .constant_data (constant_data[((16 * (7 + 1)) - 1):(16 * 7)]),  .constant_para (constant_para[((16 * (7 + 1)) - 1):(16 * 7)]),  .constant_resadd (constant_resadd[((16 * (7 + 1)) - 1):(16 * 7)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[7].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[8].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (8 + 1)) - 1):(16 * 8)]),  .iteration_data (iteration_data[((16 * (8 + 1)) - 1):(16 * 8)]),  .constant_data (constant_data[((16 * (8 + 1)) - 1):(16 * 8)]),  .constant_para (constant_para[((16 * (8 + 1)) - 1):(16 * 8)]),  .constant_resadd (constant_resadd[((16 * (8 + 1)) - 1):(16 * 8)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[8].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[9].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (9 + 1)) - 1):(16 * 9)]),  .iteration_data (iteration_data[((16 * (9 + 1)) - 1):(16 * 9)]),  .constant_data (constant_data[((16 * (9 + 1)) - 1):(16 * 9)]),  .constant_para (constant_para[((16 * (9 + 1)) - 1):(16 * 9)]),  .constant_resadd (constant_resadd[((16 * (9 + 1)) - 1):(16 * 9)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_constant_1 (m ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[9].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[10].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (10 + 1)) - 1):(16 * 10)]),  .iteration_data (iteration_data[((16 * (10 + 1)) - 1):(16 * 10)]),  .constant_data (constant_data[((16 * (10 + 1)) - 1):(16 * 10)]),  .constant_para (constant_para[((16 * (10 + 1)) - 1):(16 * 10)]),  .constant_resadd (constant_resadd[((16 * (10 + 1)) - 1):(16 * 10)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[10].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[11].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (11 + 1)) - 1):(16 * 11)]),  .iteration_data (iteration_data[((16 * (11 + 1)) - 1):(16 * 11)]),  .constant_data (constant_data[((16 * (11 + 1)) - 1):(16 * 11)]),  .constant_para (constant_para[((16 * (11 + 1)) - 1):(16 * 11)]),  .constant_resadd (constant_resadd[((16 * (11 + 1)) - 1):(16 * 11)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[11].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[12].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (12 + 1)) - 1):(16 * 12)]),  .iteration_data (iteration_data[((16 * (12 + 1)) - 1):(16 * 12)]),  .constant_data (constant_data[((16 * (12 + 1)) - 1):(16 * 12)]),  .constant_para (constant_para[((16 * (12 + 1)) - 1):(16 * 12)]),  .constant_resadd (constant_resadd[((16 * (12 + 1)) - 1):(16 * 12)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[12].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[13].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (13 + 1)) - 1):(16 * 13)]),  .iteration_data (iteration_data[((16 * (13 + 1)) - 1):(16 * 13)]),  .constant_data (constant_data[((16 * (13 + 1)) - 1):(16 * 13)]),  .constant_para (constant_para[((16 * (13 + 1)) - 1):(16 * 13)]),  .constant_resadd (constant_resadd[((16 * (13 + 1)) - 1):(16 * 13)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[13].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[14].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (14 + 1)) - 1):(16 * 14)]),  .iteration_data (iteration_data[((16 * (14 + 1)) - 1):(16 * 14)]),  .constant_data (constant_data[((16 * (14 + 1)) - 1):(16 * 14)]),  .constant_para (constant_para[((16 * (14 + 1)) - 1):(16 * 14)]),  .constant_resadd (constant_resadd[((16 * (14 + 1)) - 1):(16 * 14)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[14].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[15].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (15 + 1)) - 1):(16 * 15)]),  .iteration_data (iteration_data[((16 * (15 + 1)) - 1):(16 * 15)]),  .constant_data (constant_data[((16 * (15 + 1)) - 1):(16 * 15)]),  .constant_para (constant_para[((16 * (15 + 1)) - 1):(16 * 15)]),  .constant_resadd (constant_resadd[((16 * (15 + 1)) - 1):(16 * 15)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[15].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[16].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (16 + 1)) - 1):(16 * 16)]),  .iteration_data (iteration_data[((16 * (16 + 1)) - 1):(16 * 16)]),  .constant_data (constant_data[((16 * (16 + 1)) - 1):(16 * 16)]),  .constant_para (constant_para[((16 * (16 + 1)) - 1):(16 * 16)]),  .constant_resadd (constant_resadd[((16 * (16 + 1)) - 1):(16 * 16)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[16].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[17].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (17 + 1)) - 1):(16 * 17)]),  .iteration_data (iteration_data[((16 * (17 + 1)) - 1):(16 * 17)]),  .constant_data (constant_data[((16 * (17 + 1)) - 1):(16 * 17)]),  .constant_para (constant_para[((16 * (17 + 1)) - 1):(16 * 17)]),  .constant_resadd (constant_resadd[((16 * (17 + 1)) - 1):(16 * 17)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[17].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[18].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (18 + 1)) - 1):(16 * 18)]),  .iteration_data (iteration_data[((16 * (18 + 1)) - 1):(16 * 18)]),  .constant_data (constant_data[((16 * (18 + 1)) - 1):(16 * 18)]),  .constant_para (constant_para[((16 * (18 + 1)) - 1):(16 * 18)]),  .constant_resadd (constant_resadd[((16 * (18 + 1)) - 1):(16 * 18)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[18].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[19].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (19 + 1)) - 1):(16 * 19)]),  .iteration_data (iteration_data[((16 * (19 + 1)) - 1):(16 * 19)]),  .constant_data (constant_data[((16 * (19 + 1)) - 1):(16 * 19)]),  .constant_para (constant_para[((16 * (19 + 1)) - 1):(16 * 19)]),  .constant_resadd (constant_resadd[((16 * (19 + 1)) - 1):(16 * 19)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[19].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[20].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (20 + 1)) - 1):(16 * 20)]),  .iteration_data (iteration_data[((16 * (20 + 1)) - 1):(16 * 20)]),  .constant_data (constant_data[((16 * (20 + 1)) - 1):(16 * 20)]),  .constant_para (constant_para[((16 * (20 + 1)) - 1):(16 * 20)]),  .constant_resadd (constant_resadd[((16 * (20 + 1)) - 1):(16 * 20)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[20].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[21].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (21 + 1)) - 1):(16 * 21)]),  .iteration_data (iteration_data[((16 * (21 + 1)) - 1):(16 * 21)]),  .constant_data (constant_data[((16 * (21 + 1)) - 1):(16 * 21)]),  .constant_para (constant_para[((16 * (21 + 1)) - 1):(16 * 21)]),  .constant_resadd (constant_resadd[((16 * (21 + 1)) - 1):(16 * 21)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[21].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[22].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (22 + 1)) - 1):(16 * 22)]),  .iteration_data (iteration_data[((16 * (22 + 1)) - 1):(16 * 22)]),  .constant_data (constant_data[((16 * (22 + 1)) - 1):(16 * 22)]),  .constant_para (constant_para[((16 * (22 + 1)) - 1):(16 * 22)]),  .constant_resadd (constant_resadd[((16 * (22 + 1)) - 1):(16 * 22)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[22].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[23].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (23 + 1)) - 1):(16 * 23)]),  .iteration_data (iteration_data[((16 * (23 + 1)) - 1):(16 * 23)]),  .constant_data (constant_data[((16 * (23 + 1)) - 1):(16 * 23)]),  .constant_para (constant_para[((16 * (23 + 1)) - 1):(16 * 23)]),  .constant_resadd (constant_resadd[((16 * (23 + 1)) - 1):(16 * 23)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[23].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[24].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (24 + 1)) - 1):(16 * 24)]),  .iteration_data (iteration_data[((16 * (24 + 1)) - 1):(16 * 24)]),  .constant_data (constant_data[((16 * (24 + 1)) - 1):(16 * 24)]),  .constant_para (constant_para[((16 * (24 + 1)) - 1):(16 * 24)]),  .constant_resadd (constant_resadd[((16 * (24 + 1)) - 1):(16 * 24)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[24].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[25].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (25 + 1)) - 1):(16 * 25)]),  .iteration_data (iteration_data[((16 * (25 + 1)) - 1):(16 * 25)]),  .constant_data (constant_data[((16 * (25 + 1)) - 1):(16 * 25)]),  .constant_para (constant_para[((16 * (25 + 1)) - 1):(16 * 25)]),  .constant_resadd (constant_resadd[((16 * (25 + 1)) - 1):(16 * 25)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[25].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[26].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (26 + 1)) - 1):(16 * 26)]),  .iteration_data (iteration_data[((16 * (26 + 1)) - 1):(16 * 26)]),  .constant_data (constant_data[((16 * (26 + 1)) - 1):(16 * 26)]),  .constant_para (constant_para[((16 * (26 + 1)) - 1):(16 * 26)]),  .constant_resadd (constant_resadd[((16 * (26 + 1)) - 1):(16 * 26)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[26].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[27].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (27 + 1)) - 1):(16 * 27)]),  .iteration_data (iteration_data[((16 * (27 + 1)) - 1):(16 * 27)]),  .constant_data (constant_data[((16 * (27 + 1)) - 1):(16 * 27)]),  .constant_para (constant_para[((16 * (27 + 1)) - 1):(16 * 27)]),  .constant_resadd (constant_resadd[((16 * (27 + 1)) - 1):(16 * 27)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[27].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[28].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (28 + 1)) - 1):(16 * 28)]),  .iteration_data (iteration_data[((16 * (28 + 1)) - 1):(16 * 28)]),  .constant_data (constant_data[((16 * (28 + 1)) - 1):(16 * 28)]),  .constant_para (constant_para[((16 * (28 + 1)) - 1):(16 * 28)]),  .constant_resadd (constant_resadd[((16 * (28 + 1)) - 1):(16 * 28)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[28].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[29].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (29 + 1)) - 1):(16 * 29)]),  .iteration_data (iteration_data[((16 * (29 + 1)) - 1):(16 * 29)]),  .constant_data (constant_data[((16 * (29 + 1)) - 1):(16 * 29)]),  .constant_para (constant_para[((16 * (29 + 1)) - 1):(16 * 29)]),  .constant_resadd (constant_resadd[((16 * (29 + 1)) - 1):(16 * 29)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[29].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[30].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (30 + 1)) - 1):(16 * 30)]),  .iteration_data (iteration_data[((16 * (30 + 1)) - 1):(16 * 30)]),  .constant_data (constant_data[((16 * (30 + 1)) - 1):(16 * 30)]),  .constant_para (constant_para[((16 * (30 + 1)) - 1):(16 * 30)]),  .constant_resadd (constant_resadd[((16 * (30 + 1)) - 1):(16 * 30)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[30].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[31].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (31 + 1)) - 1):(16 * 31)]),  .iteration_data (iteration_data[((16 * (31 + 1)) - 1):(16 * 31)]),  .constant_data (constant_data[((16 * (31 + 1)) - 1):(16 * 31)]),  .constant_para (constant_para[((16 * (31 + 1)) - 1):(16 * 31)]),  .constant_resadd (constant_resadd[((16 * (31 + 1)) - 1):(16 * 31)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[31].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[32].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (32 + 1)) - 1):(16 * 32)]),  .iteration_data (iteration_data[((16 * (32 + 1)) - 1):(16 * 32)]),  .constant_data (constant_data[((16 * (32 + 1)) - 1):(16 * 32)]),  .constant_para (constant_para[((16 * (32 + 1)) - 1):(16 * 32)]),  .constant_resadd (constant_resadd[((16 * (32 + 1)) - 1):(16 * 32)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[32].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[33].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (33 + 1)) - 1):(16 * 33)]),  .iteration_data (iteration_data[((16 * (33 + 1)) - 1):(16 * 33)]),  .constant_data (constant_data[((16 * (33 + 1)) - 1):(16 * 33)]),  .constant_para (constant_para[((16 * (33 + 1)) - 1):(16 * 33)]),  .constant_resadd (constant_resadd[((16 * (33 + 1)) - 1):(16 * 33)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[33].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[34].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (34 + 1)) - 1):(16 * 34)]),  .iteration_data (iteration_data[((16 * (34 + 1)) - 1):(16 * 34)]),  .constant_data (constant_data[((16 * (34 + 1)) - 1):(16 * 34)]),  .constant_para (constant_para[((16 * (34 + 1)) - 1):(16 * 34)]),  .constant_resadd (constant_resadd[((16 * (34 + 1)) - 1):(16 * 34)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[34].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[35].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (35 + 1)) - 1):(16 * 35)]),  .iteration_data (iteration_data[((16 * (35 + 1)) - 1):(16 * 35)]),  .constant_data (constant_data[((16 * (35 + 1)) - 1):(16 * 35)]),  .constant_para (constant_para[((16 * (35 + 1)) - 1):(16 * 35)]),  .constant_resadd (constant_resadd[((16 * (35 + 1)) - 1):(16 * 35)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[35].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[36].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (36 + 1)) - 1):(16 * 36)]),  .iteration_data (iteration_data[((16 * (36 + 1)) - 1):(16 * 36)]),  .constant_data (constant_data[((16 * (36 + 1)) - 1):(16 * 36)]),  .constant_para (constant_para[((16 * (36 + 1)) - 1):(16 * 36)]),  .constant_resadd (constant_resadd[((16 * (36 + 1)) - 1):(16 * 36)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[36].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[37].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (37 + 1)) - 1):(16 * 37)]),  .iteration_data (iteration_data[((16 * (37 + 1)) - 1):(16 * 37)]),  .constant_data (constant_data[((16 * (37 + 1)) - 1):(16 * 37)]),  .constant_para (constant_para[((16 * (37 + 1)) - 1):(16 * 37)]),  .constant_resadd (constant_resadd[((16 * (37 + 1)) - 1):(16 * 37)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[37].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[38].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (38 + 1)) - 1):(16 * 38)]),  .iteration_data (iteration_data[((16 * (38 + 1)) - 1):(16 * 38)]),  .constant_data (constant_data[((16 * (38 + 1)) - 1):(16 * 38)]),  .constant_para (constant_para[((16 * (38 + 1)) - 1):(16 * 38)]),  .constant_resadd (constant_resadd[((16 * (38 + 1)) - 1):(16 * 38)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[38].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[39].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (39 + 1)) - 1):(16 * 39)]),  .iteration_data (iteration_data[((16 * (39 + 1)) - 1):(16 * 39)]),  .constant_data (constant_data[((16 * (39 + 1)) - 1):(16 * 39)]),  .constant_para (constant_para[((16 * (39 + 1)) - 1):(16 * 39)]),  .constant_resadd (constant_resadd[((16 * (39 + 1)) - 1):(16 * 39)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[39].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[40].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (40 + 1)) - 1):(16 * 40)]),  .iteration_data (iteration_data[((16 * (40 + 1)) - 1):(16 * 40)]),  .constant_data (constant_data[((16 * (40 + 1)) - 1):(16 * 40)]),  .constant_para (constant_para[((16 * (40 + 1)) - 1):(16 * 40)]),  .constant_resadd (constant_resadd[((16 * (40 + 1)) - 1):(16 * 40)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[40].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[41].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (41 + 1)) - 1):(16 * 41)]),  .iteration_data (iteration_data[((16 * (41 + 1)) - 1):(16 * 41)]),  .constant_data (constant_data[((16 * (41 + 1)) - 1):(16 * 41)]),  .constant_para (constant_para[((16 * (41 + 1)) - 1):(16 * 41)]),  .constant_resadd (constant_resadd[((16 * (41 + 1)) - 1):(16 * 41)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[41].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[42].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (42 + 1)) - 1):(16 * 42)]),  .iteration_data (iteration_data[((16 * (42 + 1)) - 1):(16 * 42)]),  .constant_data (constant_data[((16 * (42 + 1)) - 1):(16 * 42)]),  .constant_para (constant_para[((16 * (42 + 1)) - 1):(16 * 42)]),  .constant_resadd (constant_resadd[((16 * (42 + 1)) - 1):(16 * 42)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[42].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[43].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (43 + 1)) - 1):(16 * 43)]),  .iteration_data (iteration_data[((16 * (43 + 1)) - 1):(16 * 43)]),  .constant_data (constant_data[((16 * (43 + 1)) - 1):(16 * 43)]),  .constant_para (constant_para[((16 * (43 + 1)) - 1):(16 * 43)]),  .constant_resadd (constant_resadd[((16 * (43 + 1)) - 1):(16 * 43)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[43].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[44].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (44 + 1)) - 1):(16 * 44)]),  .iteration_data (iteration_data[((16 * (44 + 1)) - 1):(16 * 44)]),  .constant_data (constant_data[((16 * (44 + 1)) - 1):(16 * 44)]),  .constant_para (constant_para[((16 * (44 + 1)) - 1):(16 * 44)]),  .constant_resadd (constant_resadd[((16 * (44 + 1)) - 1):(16 * 44)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[44].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[45].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (45 + 1)) - 1):(16 * 45)]),  .iteration_data (iteration_data[((16 * (45 + 1)) - 1):(16 * 45)]),  .constant_data (constant_data[((16 * (45 + 1)) - 1):(16 * 45)]),  .constant_para (constant_para[((16 * (45 + 1)) - 1):(16 * 45)]),  .constant_resadd (constant_resadd[((16 * (45 + 1)) - 1):(16 * 45)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[45].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[46].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (46 + 1)) - 1):(16 * 46)]),  .iteration_data (iteration_data[((16 * (46 + 1)) - 1):(16 * 46)]),  .constant_data (constant_data[((16 * (46 + 1)) - 1):(16 * 46)]),  .constant_para (constant_para[((16 * (46 + 1)) - 1):(16 * 46)]),  .constant_resadd (constant_resadd[((16 * (46 + 1)) - 1):(16 * 46)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[46].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[47].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (47 + 1)) - 1):(16 * 47)]),  .iteration_data (iteration_data[((16 * (47 + 1)) - 1):(16 * 47)]),  .constant_data (constant_data[((16 * (47 + 1)) - 1):(16 * 47)]),  .constant_para (constant_para[((16 * (47 + 1)) - 1):(16 * 47)]),  .constant_resadd (constant_resadd[((16 * (47 + 1)) - 1):(16 * 47)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[47].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[48].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (48 + 1)) - 1):(16 * 48)]),  .iteration_data (iteration_data[((16 * (48 + 1)) - 1):(16 * 48)]),  .constant_data (constant_data[((16 * (48 + 1)) - 1):(16 * 48)]),  .constant_para (constant_para[((16 * (48 + 1)) - 1):(16 * 48)]),  .constant_resadd (constant_resadd[((16 * (48 + 1)) - 1):(16 * 48)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[48].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[49].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (49 + 1)) - 1):(16 * 49)]),  .iteration_data (iteration_data[((16 * (49 + 1)) - 1):(16 * 49)]),  .constant_data (constant_data[((16 * (49 + 1)) - 1):(16 * 49)]),  .constant_para (constant_para[((16 * (49 + 1)) - 1):(16 * 49)]),  .constant_resadd (constant_resadd[((16 * (49 + 1)) - 1):(16 * 49)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[49].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[50].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (50 + 1)) - 1):(16 * 50)]),  .iteration_data (iteration_data[((16 * (50 + 1)) - 1):(16 * 50)]),  .constant_data (constant_data[((16 * (50 + 1)) - 1):(16 * 50)]),  .constant_para (constant_para[((16 * (50 + 1)) - 1):(16 * 50)]),  .constant_resadd (constant_resadd[((16 * (50 + 1)) - 1):(16 * 50)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[50].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[51].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (51 + 1)) - 1):(16 * 51)]),  .iteration_data (iteration_data[((16 * (51 + 1)) - 1):(16 * 51)]),  .constant_data (constant_data[((16 * (51 + 1)) - 1):(16 * 51)]),  .constant_para (constant_para[((16 * (51 + 1)) - 1):(16 * 51)]),  .constant_resadd (constant_resadd[((16 * (51 + 1)) - 1):(16 * 51)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[51].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[52].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (52 + 1)) - 1):(16 * 52)]),  .iteration_data (iteration_data[((16 * (52 + 1)) - 1):(16 * 52)]),  .constant_data (constant_data[((16 * (52 + 1)) - 1):(16 * 52)]),  .constant_para (constant_para[((16 * (52 + 1)) - 1):(16 * 52)]),  .constant_resadd (constant_resadd[((16 * (52 + 1)) - 1):(16 * 52)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[52].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[53].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (53 + 1)) - 1):(16 * 53)]),  .iteration_data (iteration_data[((16 * (53 + 1)) - 1):(16 * 53)]),  .constant_data (constant_data[((16 * (53 + 1)) - 1):(16 * 53)]),  .constant_para (constant_para[((16 * (53 + 1)) - 1):(16 * 53)]),  .constant_resadd (constant_resadd[((16 * (53 + 1)) - 1):(16 * 53)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[53].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[54].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (54 + 1)) - 1):(16 * 54)]),  .iteration_data (iteration_data[((16 * (54 + 1)) - 1):(16 * 54)]),  .constant_data (constant_data[((16 * (54 + 1)) - 1):(16 * 54)]),  .constant_para (constant_para[((16 * (54 + 1)) - 1):(16 * 54)]),  .constant_resadd (constant_resadd[((16 * (54 + 1)) - 1):(16 * 54)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[54].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[55].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (55 + 1)) - 1):(16 * 55)]),  .iteration_data (iteration_data[((16 * (55 + 1)) - 1):(16 * 55)]),  .constant_data (constant_data[((16 * (55 + 1)) - 1):(16 * 55)]),  .constant_para (constant_para[((16 * (55 + 1)) - 1):(16 * 55)]),  .constant_resadd (constant_resadd[((16 * (55 + 1)) - 1):(16 * 55)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[55].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[56].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (56 + 1)) - 1):(16 * 56)]),  .iteration_data (iteration_data[((16 * (56 + 1)) - 1):(16 * 56)]),  .constant_data (constant_data[((16 * (56 + 1)) - 1):(16 * 56)]),  .constant_para (constant_para[((16 * (56 + 1)) - 1):(16 * 56)]),  .constant_resadd (constant_resadd[((16 * (56 + 1)) - 1):(16 * 56)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[56].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[57].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (57 + 1)) - 1):(16 * 57)]),  .iteration_data (iteration_data[((16 * (57 + 1)) - 1):(16 * 57)]),  .constant_data (constant_data[((16 * (57 + 1)) - 1):(16 * 57)]),  .constant_para (constant_para[((16 * (57 + 1)) - 1):(16 * 57)]),  .constant_resadd (constant_resadd[((16 * (57 + 1)) - 1):(16 * 57)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[57].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[58].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (58 + 1)) - 1):(16 * 58)]),  .iteration_data (iteration_data[((16 * (58 + 1)) - 1):(16 * 58)]),  .constant_data (constant_data[((16 * (58 + 1)) - 1):(16 * 58)]),  .constant_para (constant_para[((16 * (58 + 1)) - 1):(16 * 58)]),  .constant_resadd (constant_resadd[((16 * (58 + 1)) - 1):(16 * 58)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[58].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[59].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (59 + 1)) - 1):(16 * 59)]),  .iteration_data (iteration_data[((16 * (59 + 1)) - 1):(16 * 59)]),  .constant_data (constant_data[((16 * (59 + 1)) - 1):(16 * 59)]),  .constant_para (constant_para[((16 * (59 + 1)) - 1):(16 * 59)]),  .constant_resadd (constant_resadd[((16 * (59 + 1)) - 1):(16 * 59)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[59].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[60].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (60 + 1)) - 1):(16 * 60)]),  .iteration_data (iteration_data[((16 * (60 + 1)) - 1):(16 * 60)]),  .constant_data (constant_data[((16 * (60 + 1)) - 1):(16 * 60)]),  .constant_para (constant_para[((16 * (60 + 1)) - 1):(16 * 60)]),  .constant_resadd (constant_resadd[((16 * (60 + 1)) - 1):(16 * 60)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[60].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[61].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (61 + 1)) - 1):(16 * 61)]),  .iteration_data (iteration_data[((16 * (61 + 1)) - 1):(16 * 61)]),  .constant_data (constant_data[((16 * (61 + 1)) - 1):(16 * 61)]),  .constant_para (constant_para[((16 * (61 + 1)) - 1):(16 * 61)]),  .constant_resadd (constant_resadd[((16 * (61 + 1)) - 1):(16 * 61)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[61].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[62].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (62 + 1)) - 1):(16 * 62)]),  .iteration_data (iteration_data[((16 * (62 + 1)) - 1):(16 * 62)]),  .constant_data (constant_data[((16 * (62 + 1)) - 1):(16 * 62)]),  .constant_para (constant_para[((16 * (62 + 1)) - 1):(16 * 62)]),  .constant_resadd (constant_resadd[((16 * (62 + 1)) - 1):(16 * 62)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[62].operator".
-  Expression: state
-  	use +lint=PCWM for more details
-
-
-Warning-[PCWM-W] Port connection width mismatch
-../rtl/vcu.v, 1102
-" operator operator[63].operator( .clk (clk),  .rst (rst),  .state (state),  .constant_code (constant_code),  .operation_code (operation_code),  .configuration_code (configuration_code),  .data (operator_data[((16 * (63 + 1)) - 1):(16 * 63)]),  .iteration_data (iteration_data[((16 * (63 + 1)) - 1):(16 * 63)]),  .constant_data (constant_data[((16 * (63 + 1)) - 1):(16 * 63)]),  .constant_para (constant_para[((16 * (63 + 1)) - 1):(16 * 63)]),  .constant_resadd (constant_resadd[((16 * (63 + 1)) - 1):(16 * 63)]),  .addition_constant_0 (addition_constant_0),  .addition_constant_1 (addition_constant_1),  .addition_constant_2 (addition_constant_2),  .compare_constant (compare_constant),  .multiplication_constant_0 (multiplication_constant_0),  .multiplication_co ... "
-  The following 3-bit expression is connected to 2-bit port "state" of module 
-  "operator", instance "operator[63].operator".
-  Expression: state
-  	use +lint=PCWM for more details
 
 Notice: Ports coerced to inout, use -notice for details
 Starting vcs inline pass...
 5 modules and 0 UDP read.
 recompiling module vcu_tb
 	However, due to incremental compilation, only 1 module needs to be compiled. 
-make[1]: Entering directory '/home/weizema/work/vcu_verify/sim/csrc'
 rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic  -o .//../simv.daidir//_csrc0.so objs/amcQw_d.o 
 rm -f _csrc0.so
 if [ -x ../simv ]; then chmod -x ../simv; fi
 g++  -o ../simv -no-pie    -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ \
 -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -Wl,--no-as-needed -rdynamic  -Wl,-rpath=/home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib \
--L/home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib     _27399_archive_1.so \
+-L/home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib     _3008_archive_1.so \
 _prev_archive_1.so _csrc0.so  SIM_l.o  _csrc0.so     rmapats_mop.o rmapats.o rmar.o \
 rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          -lzerosoft_rt_stubs -lvirsim \
 -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/weizema/tools/synopsys/vcs/O-2018.09-SP2/linux64/lib/vcs_tls.o \
@@ -646,14 +70,849 @@ rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          -lzerosoft_rt_stubs -lvirsim
 /home/weizema/tools/synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[1]: Leaving directory '/home/weizema/work/vcu_verify/sim/csrc'
-Command: /home/weizema/work/vcu_verify/sim/./simv +vcd+vcdpluson +memcbk +error+999 -lca -a sim.log
+Command: /home/weizema/work/vcu_verify/sim/./simv +vcd+vcdpluson +memcbk +error+999 -lca -a sim.log +define+DATA_NUM=800 +define+NUM_INSN=1
 Chronologic VCS simulator copyright 1991-2018
 Contains Synopsys proprietary information.
-Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Jul 25 10:24 2023
-$finish called from file "./vcu_tb.v", line 285.
-$finish at simulation time               120130
+Compiler version O-2018.09-SP2_Full64; Runtime version O-2018.09-SP2_Full64;  Jul 31 15:38 2023
+
+Warning-[STASKW_CO1] Cannot open file
+  The file '../data/para.dat' could not be opened. No such file or directory.
+  Please ensure that the file exists with proper permissions.
+
+
+Warning-[STASKW_RMCOF] Cannot open file
+./vcu_tb.v, 97
+  Cannot open file '../data/para.dat' passed as argument to $readmem.
+  Please verify that the first argument to $readmem is a file that exists with
+  proper permissions.
+
+
+Warning-[STASKW_CO1] Cannot open file
+  The file '../data/resadd.dat' could not be opened. No such file or 
+  directory.
+  Please ensure that the file exists with proper permissions.
+
+
+Warning-[STASKW_RMCOF] Cannot open file
+./vcu_tb.v, 99
+  Cannot open file '../data/resadd.dat' passed as argument to $readmem.
+  Please verify that the first argument to $readmem is a file that exists with
+  proper permissions.
+
+*Verdi* Loading libsscore_vcs201809.so
+FSDB Dumper for VCS, Release Verdi_O-2018.09-SP2, Linux x86_64/64bit, 02/21/2019
+(C) 1996 - 2019 by Synopsys, Inc.
+*Verdi* FSDB WARNING: The FSDB file already exists. Overwriting the FSDB file may crash the programs that are using this file.
+*Verdi* : Create FSDB file 'vcu.fsdb'
+*Verdi* : Begin traversing the scopes, layer (0).
+*Verdi* : End of traversing.
+*Verdi* : Begin traversing the MDAs, layer (0).
+*Verdi* : Enable +mda and +packedmda dumping.
+*Verdi* : End of traversing the MDAs.
+          x
+          0
+          1
+          2
+          3
+          4
+          5
+          6
+          7
+          8
+          9
+         10
+         11
+         12
+         13
+         14
+         15
+         16
+         17
+         18
+         19
+         20
+         21
+         22
+         23
+         24
+         25
+         26
+         27
+         28
+         29
+         30
+         31
+         32
+         33
+         34
+         35
+         36
+         37
+         38
+         39
+         40
+         41
+         42
+         43
+         44
+         45
+         46
+         47
+         48
+         49
+         50
+         51
+         52
+         53
+         54
+         55
+         56
+         57
+         58
+         59
+         60
+         61
+         62
+         63
+         64
+         65
+         66
+         67
+         68
+         69
+         70
+         71
+         72
+         73
+         74
+         75
+         76
+         77
+         78
+         79
+         80
+         81
+         82
+         83
+         84
+         85
+         86
+         87
+         88
+         89
+         90
+         91
+         92
+         93
+         94
+         95
+         96
+         97
+         98
+         99
+        100
+        101
+        102
+        103
+        104
+        105
+        106
+        107
+        108
+        109
+        110
+        111
+        112
+        113
+        114
+        115
+        116
+        117
+        118
+        119
+        120
+        121
+        122
+        123
+        124
+        125
+        126
+        127
+        128
+        129
+        130
+        131
+        132
+        133
+        134
+        135
+        136
+        137
+        138
+        139
+        140
+        141
+        142
+        143
+        144
+        145
+        146
+        147
+        148
+        149
+        150
+        151
+        152
+        153
+        154
+        155
+        156
+        157
+        158
+        159
+        160
+        161
+        162
+        163
+        164
+        165
+        166
+        167
+        168
+        169
+        170
+        171
+        172
+        173
+        174
+        175
+        176
+        177
+        178
+        179
+        180
+        181
+        182
+        183
+        184
+        185
+        186
+        187
+        188
+        189
+        190
+        191
+        192
+        193
+        194
+        195
+        196
+        197
+        198
+        199
+        200
+        201
+        202
+        203
+        204
+        205
+        206
+        207
+        208
+        209
+        210
+        211
+        212
+        213
+        214
+        215
+        216
+        217
+        218
+        219
+        220
+        221
+        222
+        223
+        224
+        225
+        226
+        227
+        228
+        229
+        230
+        231
+        232
+        233
+        234
+        235
+        236
+        237
+        238
+        239
+        240
+        241
+        242
+        243
+        244
+        245
+        246
+        247
+        248
+        249
+        250
+        251
+        252
+        253
+        254
+        255
+        256
+        257
+        258
+        259
+        260
+        261
+        262
+        263
+        264
+        265
+        266
+        267
+        268
+        269
+        270
+        271
+        272
+        273
+        274
+        275
+        276
+        277
+        278
+        279
+        280
+        281
+        282
+        283
+        284
+        285
+        286
+        287
+        288
+        289
+        290
+        291
+        292
+        293
+        294
+        295
+        296
+        297
+        298
+        299
+        300
+        301
+        302
+        303
+        304
+        305
+        306
+        307
+        308
+        309
+        310
+        311
+        312
+        313
+        314
+        315
+        316
+        317
+        318
+        319
+        320
+        321
+        322
+        323
+        324
+        325
+        326
+        327
+        328
+        329
+        330
+        331
+        332
+        333
+        334
+        335
+        336
+        337
+        338
+        339
+        340
+        341
+        342
+        343
+        344
+        345
+        346
+        347
+        348
+        349
+        350
+        351
+        352
+        353
+        354
+        355
+        356
+        357
+        358
+        359
+        360
+        361
+        362
+        363
+        364
+        365
+        366
+        367
+        368
+        369
+        370
+        371
+        372
+        373
+        374
+        375
+        376
+        377
+        378
+        379
+        380
+        381
+        382
+        383
+        384
+        385
+        386
+        387
+        388
+        389
+        390
+        391
+        392
+        393
+        394
+        395
+        396
+        397
+        398
+        399
+        400
+        401
+        402
+        403
+        404
+        405
+        406
+        407
+        408
+        409
+        410
+        411
+        412
+        413
+        414
+        415
+        416
+        417
+        418
+        419
+        420
+        421
+        422
+        423
+        424
+        425
+        426
+        427
+        428
+        429
+        430
+        431
+        432
+        433
+        434
+        435
+        436
+        437
+        438
+        439
+        440
+        441
+        442
+        443
+        444
+        445
+        446
+        447
+        448
+        449
+        450
+        451
+        452
+        453
+        454
+        455
+        456
+        457
+        458
+        459
+        460
+        461
+        462
+        463
+        464
+        465
+        466
+        467
+        468
+        469
+        470
+        471
+        472
+        473
+        474
+        475
+        476
+        477
+        478
+        479
+        480
+        481
+        482
+        483
+        484
+        485
+        486
+        487
+        488
+        489
+        490
+        491
+        492
+        493
+        494
+        495
+        496
+        497
+        498
+        499
+        500
+        501
+        502
+        503
+        504
+        505
+        506
+        507
+        508
+        509
+        510
+        511
+        512
+        513
+        514
+        515
+        516
+        517
+        518
+        519
+        520
+        521
+        522
+        523
+        524
+        525
+        526
+        527
+        528
+        529
+        530
+        531
+        532
+        533
+        534
+        535
+        536
+        537
+        538
+        539
+        540
+        541
+        542
+        543
+        544
+        545
+        546
+        547
+        548
+        549
+        550
+        551
+        552
+        553
+        554
+        555
+        556
+        557
+        558
+        559
+        560
+        561
+        562
+        563
+        564
+        565
+        566
+        567
+        568
+        569
+        570
+        571
+        572
+        573
+        574
+        575
+        576
+        577
+        578
+        579
+        580
+        581
+        582
+        583
+        584
+        585
+        586
+        587
+        588
+        589
+        590
+        591
+        592
+        593
+        594
+        595
+        596
+        597
+        598
+        599
+        600
+        601
+        602
+        603
+        604
+        605
+        606
+        607
+        608
+        609
+        610
+        611
+        612
+        613
+        614
+        615
+        616
+        617
+        618
+        619
+        620
+        621
+        622
+        623
+        624
+        625
+        626
+        627
+        628
+        629
+        630
+        631
+        632
+        633
+        634
+        635
+        636
+        637
+        638
+        639
+        640
+        641
+        642
+        643
+        644
+        645
+        646
+        647
+        648
+        649
+        650
+        651
+        652
+        653
+        654
+        655
+        656
+        657
+        658
+        659
+        660
+        661
+        662
+        663
+        664
+        665
+        666
+        667
+        668
+        669
+        670
+        671
+        672
+        673
+        674
+        675
+        676
+        677
+        678
+        679
+        680
+        681
+        682
+        683
+        684
+        685
+        686
+        687
+        688
+        689
+        690
+        691
+        692
+        693
+        694
+        695
+        696
+        697
+        698
+        699
+        700
+        701
+        702
+        703
+        704
+        705
+        706
+        707
+        708
+        709
+        710
+        711
+        712
+        713
+        714
+        715
+        716
+        717
+        718
+        719
+        720
+        721
+        722
+        723
+        724
+        725
+        726
+        727
+        728
+        729
+        730
+        731
+        732
+        733
+        734
+        735
+        736
+        737
+        738
+        739
+        740
+        741
+        742
+        743
+        744
+        745
+        746
+        747
+        748
+        749
+        750
+        751
+        752
+        753
+        754
+        755
+        756
+        757
+        758
+        759
+        760
+        761
+        762
+        763
+        764
+        765
+        766
+        767
+        768
+        769
+        770
+        771
+        772
+        773
+        774
+        775
+        776
+        777
+        778
+        779
+        780
+        781
+        782
+        783
+        784
+        785
+        786
+        787
+        788
+        789
+        790
+        791
+        792
+        793
+        794
+        795
+        796
+        797
+        798
+        799
+$finish called from file "./vcu_tb.v", line 127.
+$finish at simulation time               424480
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 120130 ps
-CPU Time:      0.270 seconds;       Data structure size:   4.0Mb
-Tue Jul 25 10:24:21 2023
+Time: 424480 ps
+CPU Time:      1.410 seconds;       Data structure size:   4.0Mb
+Mon Jul 31 15:38:32 2023

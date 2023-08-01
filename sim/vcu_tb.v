@@ -86,8 +86,15 @@ module vcu_tb();
   always #CLK_PERIOD clk = ~clk;
 
   integer result_file;
-
   integer insn_num;
+  integer i;
+  integer err_cnt = 0;
+  integer cor_cnt = 0;
+  
+  reg [OFMAP_DATA_WIDTH-1:0] gt_reg [0:`DATA_NUM];
+  initial begin
+  $readmemh("../data/ofmap.dat", gt_reg);
+  end
 
   initial
     begin
@@ -110,21 +117,36 @@ module vcu_tb();
       #20
        rst = 0;
       #20
-       // insn_valid = 1'b1;
-       #20
-       work_en <= 1;
-      #20
-       work_en <= 0;
-      #20
        for(insn_num=0;insn_num<`NUM_INSN;insn_num=insn_num+1)
          begin
-           insn = insn_reg[insn_num];
-           @(posedge vcu_done);
+           #20
+            work_en <= 1;
+            insn = insn_reg[insn_num];
+           #20
+            work_en <= 0;
+           @(negedge vcu_done);
          end
 
-       #1000 
-       $fclose(result_file);
-       $finish();
+       for(i=0;i<`DATA_NUM;i=i+1)
+         begin
+           $fwrite(result_file,"%h\n",two_port_ram_512x4096_ofmap.mem[i]);
+           if (gt_reg[i]==two_port_ram_512x4096_ofmap.mem[i]) begin
+                    cor_cnt =  cor_cnt + 1;
+                    // $display("mismatch number is %d\n", cor_cnt);
+                end
+                else begin
+                    err_cnt = err_cnt + 1;
+                    $display("index is %d, mem addr is %h", i, i);
+                    $display("gt is %h", gt_reg[i]);
+                    $display("re is %h", two_port_ram_512x4096_ofmap.mem[i]);    
+                    // $display("mismatch number is %d\n", err_cnt);
+                end
+         end
+        $display("mismatch number is %d", err_cnt);
+
+       #1000
+        $fclose(result_file);
+      $finish();
     end
 
   vcu vcu(
@@ -223,18 +245,6 @@ module vcu_tb();
                           .r_data(r_data_resadd)
                         );
 
-  integer i;
-
-  initial
-    begin
-      @(posedge vcu_done)
-        begin
-          for(i=0;i<`DATA_NUM;i=i+1)
-            begin
-              $fwrite(result_file,"%h\n",two_port_ram_512x4096_ofmap.mem[i]);
-            end
-        end
-    end
 
   integer sim_time = 5000000;
 
@@ -245,8 +255,6 @@ module vcu_tb();
 
   initial
     begin
-      // $dumpfile("npu_whole.vcd");
-      // $dumpvars;
       $fsdbDumpfile("vcu.fsdb");
       $fsdbDumpvars(0);
       $fsdbDumpMDA();

@@ -1,5 +1,0 @@
-@elabcom rc file Version 1.0
-[oh]
-invokeDir = /home/weizema/work/vcu_verify/sim
-hostCommand = -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top vcu_tb -Lf work +disable_message+C00388+C00389 -SNPS_ELABCOM -saveElab
-simType = VCS

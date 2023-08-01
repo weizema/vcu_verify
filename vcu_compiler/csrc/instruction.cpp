@@ -2,8 +2,8 @@
  * @Author: weizema
  * @Date: 2023-07-28 09:54:25
  * @LastEditors: weizema
- * @LastEditTime: 2023-07-31 12:36:58
- * @Description: 
+ * @LastEditTime: 2023-07-31 20:41:34
+ * @Description:
  */
 #include "instruction.h"
 
@@ -47,7 +47,7 @@ NpuInsn get_VCUExecuteINSN(uint64_t       VCU_INSN_PARA_STRIDE,
   vcu_execute.VCU_INSN_DATA_RAM_OUT_ADDRESS  = VCU_INSN_DATA_RAM_OUT_ADDRESS;
   vcu_execute.VCU_INSN_DATA_RAM_IN_ADDRESS   = VCU_INSN_DATA_RAM_IN_ADDRESS;
   converter.vcu_execute                      = vcu_execute;
-  
+
   buf << std::hex << std::setw(16) << std::setfill('0') << converter.npuinsn.high64 << std::hex << std::setw(16)
       << std::setfill('0') << converter.npuinsn.low64 << std::endl;
 
@@ -64,18 +64,19 @@ NpuInsn get_VCUConfigINSN(uint64_t       VCU_CONFIG_ADDER_CONSTANT_0,
                           std::ofstream& buf)
 {
   union INSN    converter;
-  VCUConfigINSN vcu_config                        = {};
-  vcu_config.opcode                               = VCU_INSN_OPCODE;
-  vcu_config.VCU_INSNTYPE                         = CONFIG_INSN;
-  vcu_config.VCU_CONFIG_ADDER_CONSTANT_0          = VCU_CONFIG_ADDER_CONSTANT_0;
-  vcu_config.VCU_CONFIG_ADDER_CONSTANT_1          = VCU_CONFIG_ADDER_CONSTANT_1;
-  vcu_config.VCU_CONFIG_ADDER_CONSTANT_2          = VCU_CONFIG_ADDER_CONSTANT_2;
-  vcu_config.VCU_CONFIG_MULTIPLICATION_CONSTANT_0 = VCU_CONFIG_MULTIPLICATION_CONSTANT_0;
-  vcu_config.VCU_CONFIG_MULTIPLICATION_CONSTANT_1 = VCU_CONFIG_MULTIPLICATION_CONSTANT_1;
-  vcu_config.VCU_CONFIG_MULTIPLICATION_CONSTANT_2 = VCU_CONFIG_MULTIPLICATION_CONSTANT_2;
-  vcu_config.VCU_CONFIG_COMPARE_CONSTANT          = VCU_CONFIG_COMPARE_CONSTANT;
-  vcu_config.VCU_CONFIG_FREE                      = 0;
-  converter.vcu_config                            = vcu_config;
+  VCUConfigINSN vcu_config                          = {};
+  vcu_config.opcode                                 = VCU_INSN_OPCODE;
+  vcu_config.VCU_INSNTYPE                           = CONFIG_INSN;
+  vcu_config.VCU_CONFIG_ADDER_CONSTANT_0            = VCU_CONFIG_ADDER_CONSTANT_0;
+  vcu_config.VCU_CONFIG_ADDER_CONSTANT_1            = VCU_CONFIG_ADDER_CONSTANT_1;
+  vcu_config.VCU_CONFIG_ADDER_CONSTANT_2            = VCU_CONFIG_ADDER_CONSTANT_2;
+  vcu_config.VCU_CONFIG_MULTIPLICATION_CONSTANT_0_0 = VCU_CONFIG_MULTIPLICATION_CONSTANT_0 & 0b111111111111;
+  vcu_config.VCU_CONFIG_MULTIPLICATION_CONSTANT_0_1 = ((VCU_CONFIG_MULTIPLICATION_CONSTANT_0 >> 12) & 0b1111);
+  vcu_config.VCU_CONFIG_MULTIPLICATION_CONSTANT_1   = VCU_CONFIG_MULTIPLICATION_CONSTANT_1;
+  vcu_config.VCU_CONFIG_MULTIPLICATION_CONSTANT_2   = VCU_CONFIG_MULTIPLICATION_CONSTANT_2;
+  vcu_config.VCU_CONFIG_COMPARE_CONSTANT            = VCU_CONFIG_COMPARE_CONSTANT;
+  vcu_config.VCU_CONFIG_FREE                        = 0;
+  converter.vcu_config                              = vcu_config;
 
   buf << std::hex << std::setw(16) << std::setfill('0') << converter.npuinsn.high64 << std::hex << std::setw(16)
       << std::setfill('0') << converter.npuinsn.low64 << std::endl;

@@ -1480,25 +1480,6 @@ def exp_fp16(data, debug):
     return result_comp, result_signal, result_exp_comp, result_frac_comp
 
 
-def sigmoid(data, debug=False):
-    data_signal, data_exp, data_mantissa = fp_to_bit(data)
-    addition_constant = bit_to_value("0", "01111", "0000000000")
-
-    result, result_sign, result_exp, result_mantissa = invertion(data, debug)
-
-    result, result_sign, result_exp, result_mantissa = exp_fp16(result, debug)
-
-    result, result_sign, result_exp, result_mantissa = addition_noloss_all(
-        result, addition_constant, debug)
-
-    result, result_sign, result_exp, result_mantissa = reciprocal(
-        result, debug)
-
-    result_fp16 = result_sign+result_exp+result_mantissa
-
-    return result
-
-
 def round_off(x: int, y: int) -> int:
     return (x + y - 1) // y * y
 
@@ -1622,3 +1603,28 @@ def trueform_to_complement(intdata: int, bit_width: int = 0) -> int:
         else:
             binary_range = 2 ** bit_width
         return (binary_range + intdata)
+
+
+def para_expand_store(A: torch.Tensor, path) -> None:
+    shape = A.shape
+
+    assert len(shape) == 4, "Expect tensor dim == 4, but got %d !" % len(shape)
+    assert shape[-1] % 32 == 0, "Expect the last dim of A is 32, but got %d, try to run ifmap_transform() first!" % shape[-1]
+
+    ddr_list = []
+
+    A_expand = A.reshape([-1])
+    A_expand = A_expand.half().numpy()
+
+    for i in range(A_expand.shape[0]):
+        if i % 32 == 0:
+            ddr_line = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        ddr_line = ddr_line + half2hex_tensor(A_expand[i]) 
+        if i % 32 == 31:
+            ddr_list.append(ddr_line)
+
+    ddr_file = open(path, "w")
+    for i in range(len(ddr_list)):
+        ddr_file.write(ddr_list[i] + '\n')
+
+    ddr_file.close()

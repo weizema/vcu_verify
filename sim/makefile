@@ -8,4 +8,4 @@ clean:
 	rm -rf ./csrc ./DVEfiles *.daidir ./csrc  						\
 		*.log  *.vpd  *.vdb  simv* *.key				\
 		+race.out* novas* verdi* *fsdb apb2apb_async *.dot *.vcd \
-		*.alias *.chain *.field *.lock *.netwk *.p2s *.pidat *.podat *.sinf *.slist *.str *.tlist *.xlist *.pdf *.dat
+		*.alias *.chain *.field *.lock *.netwk *.p2s *.pidat *.podat *.sinf *.slist *.str *.tlist *.xlist *.pdf *.dat *.txt

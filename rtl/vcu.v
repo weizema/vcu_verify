@@ -437,7 +437,7 @@ end
 
 always@(*)
 begin
-    if((state!=QUAN_CONFIG)&&(next_state==QUAN_CONFIG))
+    if(((state!=QUAN_CONFIG)&&(next_state==QUAN_CONFIG)) || ((state!=DATA_PREPARE)&&(next_state==DATA_PREPARE)))
         r_en_para = 1'b1;
     else
         r_en_para = 1'b0;

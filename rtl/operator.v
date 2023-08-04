@@ -5,7 +5,7 @@ module operator(state,clk,rst,constant_code,operation_code,configuration_code,
                 addition_constant_0,addition_constant_1,addition_constant_2,
                 multiplication_constant_0,multiplication_constant_1,multiplication_constant_2,
                 compare_constant,
-                output_result,operator_complete);
+                output_result,operator_complete,change_para);
 
 parameter fp_data_width = 16;
 parameter FPU_COMPUTE = 3'b010;
@@ -17,6 +17,7 @@ parameter INVERTION = 4'b0011;
 parameter EXPONENT = 4'b0100;
 parameter RECIPROCAL = 4'b0101;
 parameter COMPARE = 4'b0110;
+parameter CHANGE_PARA = 4'b1110;
 parameter STOP = 4'b1111;
 
 input wire [1:0]state;
@@ -45,6 +46,7 @@ input wire [fp_data_width-1:0]compare_constant;
 
 output reg [fp_data_width-1:0]output_result;
 output wire operator_complete;
+output reg change_para;
 
 wire [fp_data_width-1:0]mult_result;
 wire [fp_data_width-1:0]addition_result;
@@ -64,6 +66,7 @@ wire ln_complete;
 wire reciprocal_complete;
 wire invertion_complete;
 wire comp_complete;
+reg change_complete;
 
 reg [fp_data_width-1:0]addition_constant_data;
 reg [fp_data_width-1:0]mult_constant_data;
@@ -146,6 +149,7 @@ begin
             EXPONENT:{addition_valid,mult_valid,ln_valid,invertion_valid,exp_valid,reciprocal_valid,comp_valid} = 7'b0000100;
             RECIPROCAL:{addition_valid,mult_valid,ln_valid,invertion_valid,exp_valid,reciprocal_valid,comp_valid} = 7'b0000010;
             COMPARE:{addition_valid,mult_valid,ln_valid,invertion_valid,exp_valid,reciprocal_valid,comp_valid} = 7'b0000001;
+            CHANGE_PARA:begin change_complete = 1'b1; change_para=1'b1;end
             default:{addition_valid,mult_valid,ln_valid,invertion_valid,exp_valid,reciprocal_valid,comp_valid} = 7'b0000000;
         endcase
     end

@@ -2,7 +2,7 @@
 Author: weizema
 Date: 2023-07-31 19:38:10
 LastEditors: weizema
-LastEditTime: 2023-08-01 20:42:55
+LastEditTime: 2023-08-02 10:56:37
 Description: 
 '''
 from utils import *
@@ -84,4 +84,4 @@ def gelu(data, debug=False):
     return result
 
 
-print(addition_noloss_all(bit_to_value("0", "01101", "0000111110"), bit_to_value("0", "01110", "1111000000"), False))
+print(addition_noloss_all(bit_to_value_16("0011011110110001"), bit_to_value_16("0011101010000100"), False))

@@ -75,6 +75,38 @@ def bit_to_value(sign_str, exp_str, frac_str):
     return fp_value
 
 
+def bit_to_value_16(bit16):
+    sign_str = bit16[0]
+    exp_str = bit16[1:6]
+    frac_str = bit16[6:]
+    if exp_str == "00000" and frac_str == "0000000000":
+        fp_value = 0
+    else:
+        if len(exp_str) != 5:
+            print("指数段位宽错误")
+        if len(frac_str) != 10:
+            print("尾数段位宽错误")
+
+        if int(exp_str, 2) > int("11110", 2):
+            exp_str = "11110"
+            frac_str = "1111111111"
+            print("上溢出")
+
+        frac = int(frac_str, 2)
+        if exp_str == "00000":
+            exp = -14
+            fp_value = math.pow(2, exp)*(frac/1024)
+        else:
+            exp = int(exp_str, 2)-15
+            fp_value = math.pow(2, exp)*(1+frac/1024)
+
+        if sign_str == "0":
+            fp_value = fp_value
+        if sign_str == "1":
+            fp_value = -fp_value
+    return fp_value
+
+
 def shiftbinary(x, number):  # x表示二进制输入，number表示移位的数量,number大于0时表示左移，number小于0时表示右移
     zero = ""
     length = len(x)
@@ -1606,23 +1638,22 @@ def trueform_to_complement(intdata: int, bit_width: int = 0) -> int:
 
 
 def para_expand_store(A: torch.Tensor, path) -> None:
+    
     shape = A.shape
 
     assert len(shape) == 4, "Expect tensor dim == 4, but got %d !" % len(shape)
-    assert shape[-1] % 32 == 0, "Expect the last dim of A is 32, but got %d, try to run ifmap_transform() first!" % shape[-1]
 
     ddr_list = []
 
     A_expand = A.reshape([-1])
     A_expand = A_expand.half().numpy()
-
     for i in range(A_expand.shape[0]):
         if i % 32 == 0:
-            ddr_line = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-        ddr_line = ddr_line + half2hex_tensor(A_expand[i]) 
+            ddr_line = ""
+        ddr_line = half2hex_tensor(A_expand[i]) + ddr_line
         if i % 32 == 31:
-            ddr_list.append(ddr_line)
-
+            ddr_list.append(
+                "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" + ddr_line)
     ddr_file = open(path, "w")
     for i in range(len(ddr_list)):
         ddr_file.write(ddr_list[i] + '\n')

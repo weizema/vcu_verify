@@ -2,7 +2,7 @@
 Author: weizema
 Date: 2023-08-01 18:35:17
 LastEditors: weizema
-LastEditTime: 2023-08-01 21:39:05
+LastEditTime: 2023-08-02 14:33:37
 Description: 
 '''
 import torch
@@ -10,9 +10,9 @@ from utils import *
 from ops import *
 
 # 生成原始输入数据
-psum_tensor = torch.rand(64, 28, 28)
+psum_tensor = torch.rand(64, 14, 14)
 bias_tensor = torch.rand(64)
-bias_tensor = bias_tensor.reshape(64, 1, 1).repeat(1, 28, 28)
+bias_tensor = bias_tensor.reshape(64, 1, 1)
 # 生成软件参考输出
 ofmap_tensor_ref = psum_tensor + bias_tensor
 

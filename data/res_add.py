@@ -2,7 +2,7 @@
 Author: weizema
 Date: 2023-08-01 21:12:23
 LastEditors: weizema
-LastEditTime: 2023-08-01 21:19:00
+LastEditTime: 2023-08-02 14:37:49
 Description: 
 '''
 import torch
@@ -10,8 +10,8 @@ from utils import *
 from ops import *
 
 # 生成原始输入数据
-psum_tensor = torch.rand(64, 28, 28)
-res_tensor = torch.rand(64, 28, 28)
+psum_tensor = torch.rand(64, 14, 14)
+res_tensor = torch.rand(64, 14, 14)
 # 生成软件参考输出
 ofmap_tensor_ref = psum_tensor + res_tensor
 

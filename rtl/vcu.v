@@ -104,8 +104,8 @@ reg data_prepare_complete_temp;
 reg para_prepare_complete_temp;
 /////////////////////////////////////
 reg [ADDRESS_WIDTH-1:0]compute_count;
-reg [5:0]para_count;
-reg para_address_change;
+reg [9:0]para_channel_count;
+reg [2:0]para_functional_count;
 
 reg fpu_valid;
 reg para_config_complete;
@@ -129,7 +129,8 @@ reg insn_resadd_ram_valid;
 reg [1:0]insn_resadd_para_type;
 reg insn_type;
 reg insn_fpu_work;
-reg [5:0]insn_para_stride;
+reg [9:0]insn_para_channel_stride;
+reg [2:0]insn_para_functional_stride;
 
 wire [DATA_WIDTH*N-1:0]data_dequan_int32;
 
@@ -182,6 +183,8 @@ wire [2:0]constant_code;
 wire [9:0]insn_opcode_sram_address;
 wire [9:0]insn_opcode_number;
 
+wire change_para;
+
 //insn process
 always @(posedge clk)
 begin
@@ -220,7 +223,7 @@ begin
         insn_resadd_ram_valid <='d0;
         insn_resadd_para_type <= 'd0;
         insn_fpu_work <= 'd0;
-        insn_para_stride <= 'd0;
+        insn_para_channel_stride <= 'd0;
         insn_type <= 'd0;
         work <='d0;      
     end
@@ -242,7 +245,8 @@ begin
             insn_resadd_ram_valid <= insn[49];
             insn_resadd_para_type <= insn[48:47];
             insn_fpu_work <= insn[46];
-            insn_para_stride <= insn[45:40];
+            insn_para_channel_stride <= insn[45:37] + 1'b1;
+            insn_para_functional_stride <= insn[36:34];
             insn_type <= insn[3];
             work <= 1'b1;
         end
@@ -365,9 +369,13 @@ begin
         
         if(fpu_compute_coutinue)
         begin
-            if((insn_para_ram_valid == 2'b10)||(insn_para_ram_valid == 2'b11))
+            if(((insn_para_ram_valid == 2'b10)||(insn_para_ram_valid == 2'b11)) && ((para_channel_count==insn_para_channel_stride)&&insn_mult_para))
             begin
-                r_addr_para <= r_addr_para + para_address_change;
+                r_addr_para <= r_addr_para + 1'b1;
+            end
+            else if (((insn_para_ram_valid == 2'b10)||(insn_para_ram_valid == 2'b11)) && ((change_para)&&insn_mult_para))
+            begin
+                r_addr_para <= insn_para_functional_stride * para_functional_count + para_channel_count;
             end
             else
             begin
@@ -389,37 +397,6 @@ begin
         end
     end
 end
-
-////para_ram
-// always @(posedge clk)
-// begin
-//     if(rst)
-//     begin
-//         r_en_para <= 'd0;
-//     end
-//     else
-//     begin
-//         if((next_state==DATA_PREPARE)&&(insn_para_ram_valid==2'b10)&&((compute_count==0)||(insn_mult_para&&para_address_change)))
-//         begin
-//             r_en_para <= 1'b1;
-//             para_data_in_type <= ~insn_ram_data_in_type;
-//         end
-//         else if((next_state==QUAN_CONFIG)&&(insn_para_ram_valid==2'b11)&&((compute_count==0)||(insn_mult_para&&para_address_change)))
-//         begin
-//             r_en_para <= 1'b1;
-//             para_data_in_type <= ~insn_ram_data_in_type;
-//         end
-//         else
-//         begin
-//             r_en_para <= 1'b0;
-//         end
-    
-//         if(r_en_para)
-//         begin
-//             r_en_para <= 1'd0;
-//         end
-//     end
-// end
 
 always @(posedge clk)
 begin
@@ -766,8 +743,7 @@ begin
         // fpu_compute_coutinue <= 'd0;
         vcu_done <= 'd0;
         fpu_done_temp <= 'd0;
-        para_count <= 'd0;
-        para_address_change <= 'd0;
+        para_channel_count <= 'd0;
     end
     else
     begin
@@ -817,21 +793,19 @@ begin
                 end
             end
 
-            if((para_count==insn_para_stride)&&insn_mult_para)
+            if((para_channel_count==insn_para_channel_stride)&&insn_mult_para)
             begin
-                para_address_change <= 1'b1;
-                para_count <= 'd0;
+                para_channel_count <= 'd0;
             end
             else
             begin
-                para_address_change <= 1'b0;
                 if(fpu_done)
                 begin
-                    para_count <= para_count + 1;
+                    para_channel_count <= para_channel_count + 1;
                 end
                 else
                 begin
-                    para_count <= para_count;
+                    para_channel_count <= para_channel_count;
                 end
             end
         end
@@ -1119,7 +1093,8 @@ generate
     .multiplication_constant_1(multiplication_constant_1),
     .multiplication_constant_2(multiplication_constant_2),
     .output_result(output_result[16*(i+1)-1:16*i]),
-    .operator_complete(operator_complete[i])
+    .operator_complete(operator_complete[i]),
+    .change_para(change_para)
     );
     end
 endgenerate
